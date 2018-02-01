@@ -1,9 +1,0 @@
-{
-  "root": "gitbook",
-  "structure": {
-    "readme": "readme.md",
-    "summary": "summary.md"
-  },
-  "title": "My PhD Research!",
-  "author": "Christopher Iliffe Sprague"
-}
