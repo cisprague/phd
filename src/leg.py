@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 class Leg(object):
 
-    def __init__(self, dynamics, alpha=0, freetime=True, bound=True):
+    def __init__(self, dynamics, alpha=0, bound=True, freetime=True):
 
         # dynamical system
         self.dynamics = dynamics
@@ -21,17 +21,18 @@ class Leg(object):
         self.bound = bound
 
         # infinite time horizon
-        self.freetime = bool(freetime)
+        self.freetime = freetime
 
-        # default equality constraint dimension
-        if self.freetime:
-            self.cdim = 11
-        else:
-            self.nec = 10
+        # equality constraints
+        self.nec = self.dynamics.sdim
+        if self.freetime: self.nec += 1
 
         # numerical integrator
         self.integrator = ode(
             lambda t, fs: self.dynamics.eom_fullstate(
+                fs, self.dynamics.pontryagin(fs, self.alpha, self.bound)
+            ),
+            lambda t, fs: self.dynamics.eom_fullstate_jac(
                 fs, self.dynamics.pontryagin(fs, self.alpha, self.bound)
             )
         )
@@ -47,7 +48,7 @@ class Leg(object):
         # actions
         self.actions = np.vstack((
             self.actions,
-            self.dynamics.pontryagin(fs, self.alpha, self.bound)
+            self.dynamics.pontryagin(fs, self.alpha, bound=self.bound)
         ))
 
     def set_times(self, t0, tf):
@@ -66,7 +67,7 @@ class Leg(object):
         self.set_states(s0, sf)
         self.set_costates(l0)
 
-    def set_params(self, alpha, bound, freetime):
+    def set_params(self, alpha, bound):
 
         # homotopy parametre
         self.alpha = alpha
@@ -74,41 +75,32 @@ class Leg(object):
         # control bounds
         self.bound = bool(bound)
 
-        # inifinite time horizon
-        self.freetime = bool(freetime)
-
-        # equality constraint dimension
-        if self.freetime:
-            self.nec = 11
-        else:
-            self.nec = 10
+        # equality consraints
+        self.nec = self.dynamics.sdim
+        if self.freetime: self.nec += 1
 
     def propagate(self, atol=1e-5, rtol=1e-5):
 
         # departure fullstate
         fs0 = np.hstack((self.s0, self.l0))
 
-        # nondimensionalise
-        #fs0[0:3] /= self.dynamics.upos
-        #fs0[3:6] /= self.dynamics.uvel
-
         # reset trajectory records
         self.times = np.empty((1, 0))
-        self.states = np.empty((0, 20))
-        self.actions = np.empty((0, 4))
+        self.states = np.empty((0, self.dynamics.sdim*2))
+        self.actions = np.empty((0, self.dynamics.udim))
 
         # set integration method
-        self.integrator.set_integrator("dop853", atol=atol, rtol=rtol)
+        self.integrator.set_integrator(
+            "dop853", atol=atol, rtol=rtol, verbosity=1
+        )
 
         # set recorder
         self.integrator.set_solout(self.recorder)
 
         # set departure configuration
-        #self.integrator.set_initial_value(fs0, self.t0/self.dynamics.utim)
         self.integrator.set_initial_value(fs0, self.t0)
 
         # numerically integrate
-        #self.integrator.integrate(self.tf/self.dynamics.utim)
         self.integrator.integrate(self.tf)
 
     def mismatch(self, atol=1e-5, rtol=1e-5):
@@ -156,25 +148,38 @@ class Leg(object):
             # thrust magnitudes
             utx, uty, utz = [np.multiply(self.actions[:, 0], i) for i in [utx, uty, utz]]
 
-            ax.set_aspect("equal")
-            xlim = ax.get_xlim()
-            ylim = ax.get_ylim()
-
             # plot thrusts
             ax.quiver(
                 *[self.states[:, dim] for dim in [0, 1, 2]],
                 utx, uty, utz,
-                length=0.01
+                normalize=True,
+                length=0.5
             )
 
         return ax
 
-    def plot_controls(self):
+    def plot_states(self):
 
         # create subplots
-        f, ax = plt.subplots(4, sharex=True)
+        f, ax = plt.subplots(self.dynamics.sdim, 2, sharex=True)
 
-        for i in range(4):
-            ax[i].plot(self.actions[:, i], "k.-")
+        # get states and costates
+        s = self.states[:, :self.dynamics.sdim]
+        c = self.states[:, self.dynamics.sdim:self.dynamics.sdim*2]
 
-        plt.show()
+        # plot data
+        for i in range(self.dynamics.sdim):
+            ax[i, 0].plot(self.times, s[:, i], "k.-")
+            ax[i, 1].plot(self.times, c[:, i], "k.-")
+
+        return ax
+
+    def plot_actions(self):
+
+        # create subplots
+        f, ax = plt.subplots(self.dynamics.udim, sharex=True)
+
+        for i in range(self.dynamics.udim):
+            ax[i].plot(self.times, self.actions[:, i], "k.-")
+
+        return ax

@@ -1,43 +1,77 @@
 # Christopher Iliffe Sprague
 # christopher.iliffe.sprague@gmail.com
 
+# import resources
+from auv import AUV
+from leg import Leg
+from problem import Problem
+import pygmo_plugins_nonfree as pg7
 import numpy as np
+import matplotlib.pyplot as plt
+import pygmo as pg
 
 def main():
 
-    from auv import AUV
-    from leg import Leg
+    ''' AUV testing '''
 
     # instantiate AUV
     auv = AUV()
 
-    # instantiate Leg
-    leg = Leg(auv, alpha=0.99, bound=True)
+    # instantiate leg
+    leg = Leg(auv, alpha=0, freetime=True)
 
     # departure and arrival states
-    s0 = np.array([10, 10, 10, 1, 1, 1, 1, 0, 0, 0])
-    sf = np.array([0, 0, 0, 0, 0, 0, 1, 0, 0, 0])
+    s0 = np.array([10, 10, 10, 0, 0, 0, 1, 0, 0, 0], dtype=float)
+    sf = np.array([0, 0, 0, 0, 0, 0, 1, 0, 0, 0], dtype=float)
 
-    # departure and arrival times
-    t0 = 0
-    tf = 10000
+    # set boundary states
+    leg.set_states(s0, sf)
 
-    # initial costates
-    l0 = np.ones(10)
-
-    # set leg
-    leg.set(t0, s0, l0, tf, sf)
-
-    # propagate
+    """
+    leg.set(0, s0, np.ones(len(s0)), 1000, sf)
     leg.propagate(atol=1e-12, rtol=1e-12)
+    leg.plot_traj()
+    leg.plot_states()
+    leg.plot_actions()
+    plt.show()
+    """
+
+    # create pygmo problem
+    udp = Problem(leg)
+    prob = pg.problem(udp)
+
+    # instantiate SNOPT algorithm
+    algo = pg7.snopt7(True, "/usr/lib/libsnopt7_cpp.so")
+    algo.set_integer_option("Major iterations limit", 4000)
+    algo.set_integer_option("Iterations limit", 40000)
+    algo.set_numeric_option("Major optimality tolerance", 1e-2)
+    algo.set_numeric_option("Major feasibility tolerance", 1e-8)
+
+    algo = pg.algorithm(pg.ipopt("cobyla"))
+    algo.xtol_rel = 1e-7
+    algo = pg.algorithm(algo)
+    algo.set_verbosity(1)
+
+    # population
+    for epo in range(1):
+
+        # instantiate popoulation
+        pop = pg.population(prob, 1)
+
+        # evolve the solution
+        pop = algo.evolve(pop)
+
+    # set problem
+    udp.fitness(pop.champion_x)
 
     # plot trajectory
-    leg.plot_traj()
+    udp.leg.plot_traj()
+    udp.leg.plot_actions()
+    udp.leg.plot_states()
 
-    # plot controls
-    leg.plot_controls()
+    plt.show()
 
-    print(leg.actions)
+
 
 if __name__ == "__main__":
 

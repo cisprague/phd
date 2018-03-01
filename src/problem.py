@@ -3,6 +3,7 @@
 
 from leg import Leg
 import numpy as np
+import pygmo as pg
 
 class Problem(object):
 
@@ -21,6 +22,11 @@ class Problem(object):
     def get_nec(self):
         return self.leg.nec
 
+    def get_bounds(self):
+        lb = [10] + [-100]*self.leg.dynamics.sdim
+        ub = [100000] + [100]*self.leg.dynamics.sdim
+        return (lb, ub)
+
     def fitness(self, z):
 
         # set leg times
@@ -34,3 +40,6 @@ class Problem(object):
 
         # return fitness vector
         return np.hstack(([1], ceq))
+
+    def gradient(self, z):
+        return pg.estimate_gradient(self.fitness, z)
