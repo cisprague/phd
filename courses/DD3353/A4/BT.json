@@ -1,0 +1,444 @@
+{
+  "id": "686f249f-9114-455d-8a02-fa49f98520b7",
+  "title": "A behavior tree",
+  "description": "",
+  "root": "67d537b7-29d4-4c6f-854a-5d8264e41134",
+  "properties": {},
+  "nodes": {
+    "980b4152-970e-43bb-a9e5-9079ec30d6c3": {
+      "id": "980b4152-970e-43bb-a9e5-9079ec30d6c3",
+      "name": "Sequence",
+      "title": "Sequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 120,
+        "y": 372
+      },
+      "children": [
+        "9317decc-59cd-4130-91fe-d31bf310f3db",
+        "e109af99-0332-4cc6-8387-c6d508af5b12"
+      ]
+    },
+    "e109af99-0332-4cc6-8387-c6d508af5b12": {
+      "id": "e109af99-0332-4cc6-8387-c6d508af5b12",
+      "name": "critical",
+      "title": "Critical condition?",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 408,
+        "y": 372
+      }
+    },
+    "9317decc-59cd-4130-91fe-d31bf310f3db": {
+      "id": "9317decc-59cd-4130-91fe-d31bf310f3db",
+      "name": "go_to_surface",
+      "title": "Go to surface",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 408,
+        "y": 312
+      }
+    },
+    "5300d6ef-3081-4b7c-aafa-4ab581a08690": {
+      "id": "5300d6ef-3081-4b7c-aafa-4ab581a08690",
+      "name": "Priority",
+      "title": "Priority",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 444,
+        "y": 252
+      },
+      "children": [
+        "aaffd28f-2ae0-4d29-9e9f-3af554fecb53",
+        "b4c304a7-5037-41f0-831a-f692c4ebe10e",
+        "8979f4c8-ccc9-4467-a71a-5eefa28f348d",
+        "8f653bac-743b-4d3c-b218-bddc4d232112"
+      ]
+    },
+    "8f653bac-743b-4d3c-b218-bddc4d232112": {
+      "id": "8f653bac-743b-4d3c-b218-bddc4d232112",
+      "name": "surveyed",
+      "title": "Farm surveyed?",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 720,
+        "y": 252
+      }
+    },
+    "8979f4c8-ccc9-4467-a71a-5eefa28f348d": {
+      "id": "8979f4c8-ccc9-4467-a71a-5eefa28f348d",
+      "name": "Sequence",
+      "title": "Sequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 552,
+        "y": 192
+      },
+      "children": [
+        "967274a9-8420-4fac-8b62-e79d37141737",
+        "0af3127d-c1b5-4d63-9959-76ec555b9954"
+      ]
+    },
+    "0af3127d-c1b5-4d63-9959-76ec555b9954": {
+      "id": "0af3127d-c1b5-4d63-9959-76ec555b9954",
+      "name": "farm",
+      "title": "At farm?",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 732,
+        "y": 192
+      }
+    },
+    "967274a9-8420-4fac-8b62-e79d37141737": {
+      "id": "967274a9-8420-4fac-8b62-e79d37141737",
+      "name": "survey_walls",
+      "title": "Survey farm",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 732,
+        "y": 132
+      }
+    },
+    "67d537b7-29d4-4c6f-854a-5d8264e41134": {
+      "id": "67d537b7-29d4-4c6f-854a-5d8264e41134",
+      "name": "Priority",
+      "title": "Priority",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": -24,
+        "y": 372
+      },
+      "children": [
+        "c1e80c8d-196d-45c1-8fd3-d8466973d192",
+        "980b4152-970e-43bb-a9e5-9079ec30d6c3"
+      ]
+    },
+    "a0f17301-f075-4d88-8578-f623c36bc3ee": {
+      "id": "a0f17301-f075-4d88-8578-f623c36bc3ee",
+      "name": "dock",
+      "title": "At dock?",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 732,
+        "y": 72
+      }
+    },
+    "d62e5e71-6666-4836-8613-21e601c33a52": {
+      "id": "d62e5e71-6666-4836-8613-21e601c33a52",
+      "name": "go_to_farm",
+      "title": "Go to farm",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 744,
+        "y": 12
+      }
+    },
+    "b4c304a7-5037-41f0-831a-f692c4ebe10e": {
+      "id": "b4c304a7-5037-41f0-831a-f692c4ebe10e",
+      "name": "Sequence",
+      "title": "Sequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 552,
+        "y": 72
+      },
+      "children": [
+        "d62e5e71-6666-4836-8613-21e601c33a52",
+        "a0f17301-f075-4d88-8578-f623c36bc3ee"
+      ]
+    },
+    "9b1b8183-3ac3-4041-8989-7929cac35bb5": {
+      "id": "9b1b8183-3ac3-4041-8989-7929cac35bb5",
+      "name": "transit",
+      "title": "In transit?",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 744,
+        "y": -48
+      }
+    },
+    "aaffd28f-2ae0-4d29-9e9f-3af554fecb53": {
+      "id": "aaffd28f-2ae0-4d29-9e9f-3af554fecb53",
+      "name": "Sequence",
+      "title": "Sequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 552,
+        "y": -48
+      },
+      "children": [
+        "04307afd-b3b3-40d4-ba16-dcd5cb58861e",
+        "9b1b8183-3ac3-4041-8989-7929cac35bb5"
+      ]
+    },
+    "04307afd-b3b3-40d4-ba16-dcd5cb58861e": {
+      "id": "04307afd-b3b3-40d4-ba16-dcd5cb58861e",
+      "name": "go_to_farm",
+      "title": "Go to farm",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 744,
+        "y": -108
+      }
+    },
+    "2f4fe5a5-6cf7-4083-8c01-de52363be8d4": {
+      "id": "2f4fe5a5-6cf7-4083-8c01-de52363be8d4",
+      "name": "go_to_dock",
+      "title": "Go to dock",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 576,
+        "y": -300
+      }
+    },
+    "e228a216-2563-420b-9bb5-2ce002dbffe4": {
+      "id": "e228a216-2563-420b-9bb5-2ce002dbffe4",
+      "name": "Sequence",
+      "title": "Sequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 324,
+        "y": 252
+      },
+      "children": [
+        "a02caa80-2c89-4e28-8ed1-aae68cf38607",
+        "5300d6ef-3081-4b7c-aafa-4ab581a08690"
+      ]
+    },
+    "e38efa5e-a8a0-4315-b149-0da879fb9e56": {
+      "id": "e38efa5e-a8a0-4315-b149-0da879fb9e56",
+      "name": "found_anomaly",
+      "title": "Anomalies?",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 780,
+        "y": -168
+      }
+    },
+    "2a896fc2-cd09-48fa-8742-fb6f63a09af4": {
+      "id": "2a896fc2-cd09-48fa-8742-fb6f63a09af4",
+      "name": "examine_anomoly",
+      "title": "Examine anomolies",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 780,
+        "y": -228
+      }
+    },
+    "a02caa80-2c89-4e28-8ed1-aae68cf38607": {
+      "id": "a02caa80-2c89-4e28-8ed1-aae68cf38607",
+      "name": "Sequence",
+      "title": "Sequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 576,
+        "y": -168
+      },
+      "children": [
+        "2a896fc2-cd09-48fa-8742-fb6f63a09af4",
+        "e38efa5e-a8a0-4315-b149-0da879fb9e56"
+      ]
+    },
+    "aa3bcdd2-d563-45da-895e-d12a4fdd0a7b": {
+      "id": "aa3bcdd2-d563-45da-895e-d12a4fdd0a7b",
+      "name": "Priority",
+      "title": "Priority",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 228,
+        "y": 252
+      },
+      "children": [
+        "7625bb6f-efe1-43bf-8362-348b6305a038",
+        "e228a216-2563-420b-9bb5-2ce002dbffe4"
+      ]
+    },
+    "40c14663-faf7-4126-8e0b-0a817c271411": {
+      "id": "40c14663-faf7-4126-8e0b-0a817c271411",
+      "name": "dock",
+      "title": "At dock?",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 576,
+        "y": -240
+      }
+    },
+    "7625bb6f-efe1-43bf-8362-348b6305a038": {
+      "id": "7625bb6f-efe1-43bf-8362-348b6305a038",
+      "name": "Priority",
+      "title": "Priority",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 396,
+        "y": -156
+      },
+      "children": [
+        "2f4fe5a5-6cf7-4083-8c01-de52363be8d4",
+        "40c14663-faf7-4126-8e0b-0a817c271411"
+      ]
+    },
+    "c1e80c8d-196d-45c1-8fd3-d8466973d192": {
+      "id": "c1e80c8d-196d-45c1-8fd3-d8466973d192",
+      "name": "Sequence",
+      "title": "Sequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 108,
+        "y": 252
+      },
+      "children": [
+        "ac81edb1-1715-407e-8cd2-aa537c64129f",
+        "aa3bcdd2-d563-45da-895e-d12a4fdd0a7b"
+      ]
+    },
+    "ac81edb1-1715-407e-8cd2-aa537c64129f": {
+      "id": "ac81edb1-1715-407e-8cd2-aa537c64129f",
+      "name": "chill",
+      "title": "Do nothing",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": 348,
+        "y": -216
+      }
+    }
+  },
+  "display": {
+    "camera_x": 395,
+    "camera_y": 395.5,
+    "camera_z": 1,
+    "x": -120,
+    "y": 372
+  },
+  "custom_nodes": [
+    {
+      "name": "farm",
+      "category": "condition",
+      "title": "At farm?",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "dock",
+      "category": "condition",
+      "title": "At dock?",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "transit",
+      "category": "condition",
+      "title": "In transit?",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "critical",
+      "category": "condition",
+      "title": "Critical condition?",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "surveyed",
+      "category": "condition",
+      "title": "Farm surveyed?",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "go_to_farm",
+      "category": "action",
+      "title": "Go to farm",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "at_wall",
+      "category": "condition",
+      "title": "At wall?",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "go_to_wall",
+      "category": "action",
+      "title": "Go to wall",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "wall_finished",
+      "category": "condition",
+      "title": "Finished wall?",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "go_to_dock",
+      "category": "action",
+      "title": "Go to dock",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "go_to_surface",
+      "category": "action",
+      "title": "Go to surface",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "survey_walls",
+      "category": "action",
+      "title": "Survey walls",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "found_anomaly",
+      "category": "condition",
+      "title": "Anomalies?",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "examine_anomoly",
+      "category": "action",
+      "title": "Examine anomolies",
+      "description": null,
+      "properties": {}
+    },
+    {
+      "name": "chill",
+      "category": "action",
+      "title": "Chill",
+      "description": null,
+      "properties": {}
+    }
+  ]
+}
