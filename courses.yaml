@@ -1,0 +1,68 @@
+
+- name: Robot Funadamentals
+  code: DD3355
+  credits: 3
+  status: finished
+
+- name: Reinforcement Learning
+  code: DD3359
+  credits: 6
+  status: finished
+
+- name: Planning
+  code: DD3355
+  credits: 3
+  status: finished
+
+- name: Robotics Reading Group
+  code: DD3316
+  credits: 6
+  status: in progress
+
+- name: From Research to Impact
+  code: FEO3120
+  credits: 3
+  status: in progress
+
+- name: Writing Scientific Articles
+  code: FDS3102
+  credits: 5
+  status: in progress
+
+- name: Research Theory, Method, Practice
+  code: DD3001
+  credits: 7.5
+  status: in progress
+
+- name: Data Driven Modeling
+  code: FEL3201
+  credits: 12 # or 12
+  status: future
+
+- name: Deep Learning
+  code: DD3
+  credits: 6
+  status: future
+
+- name: Embodied Cognition
+  code: DD3
+  credits: 3
+  status: future
+
+
+# https://intra.ees.kth.se/en/forska-och-utbilda/forskarstod/support-for-doctoral/degree-requirements-1.651348
+# 240 credits total
+# 75 - 120 credits of courses
+# min 60% of credits must be 3rd cycle
+# 10 - 20 credits of general skills
+# min 10 credits of cumpulsory courses
+# min 20 credits of basic courses
+# min 20 credits of advance courses
+# max 10 credits of 1st cycle
+
+# must take DD3001
+# 3 peer reviews
+# present at many international conferences
+# publish journal towards end of phd
+# participate in TA duties
+# 30 credits must be 3rd cyle in csc
