@@ -14,40 +14,45 @@
   credits: 3
   status: finished
 
+- name: From Research to Impact
+  code: FEO3120
+  credits: 3
+  status: finished
+
+- name: Writing Scientific Articles
+  code: FDS3102
+  credits: 5
+  status: finished
+
+- name: Research Theory, Method, Practice
+  code: DD3001
+  credits: 7.5
+  status: finished
+
+- name: Machine Learning Over Networks
+  code: EP3260
+  credits: 10
+  status: finished
+
 - name: Robotics Reading Group
   code: DD3316
   credits: 6
   status: in progress
 
-- name: From Research to Impact
-  code: FEO3120
-  credits: 3
+- name: Deep Learning
+  code: DD3410
+  credits: 6
   status: in progress
 
-- name: Writing Scientific Articles
-  code: FDS3102
-  credits: 5
-  status: in progress
-
-- name: Research Theory, Method, Practice
-  code: DD3001
+- name: System Integration for Robotics
+  code: DD3356 
   credits: 7.5
   status: in progress
 
-- name: Data Driven Modeling
-  code: FEL3201
-  credits: 12 # or 12
-  status: future
-
-- name: Deep Learning
-  code: DD3
-  credits: 6
-  status: future
-
-- name: Embodied Cognition
-  code: DD3
+- name: Bornö Report
+  code: DD3 
   credits: 3
-  status: future
+  status: in progress
 
 
 # https://intra.ees.kth.se/en/forska-och-utbilda/forskarstod/support-for-doctoral/degree-requirements-1.651348
