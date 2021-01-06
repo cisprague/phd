@@ -2,57 +2,62 @@
 - name: Robot Funadamentals
   code: DD3355
   credits: 3
-  status: finished
+  completed: True
+  ladok: False
 
 - name: Reinforcement Learning
   code: DD3359
   credits: 6
-  status: finished
+  completed: True
+  ladok: True
 
 - name: Planning
   code: DD3355
   credits: 3
-  status: finished
+  completed: True
+  ladok: False
 
 - name: From Research to Impact
-  code: FEO3120
+  code: EO3120
   credits: 3
-  status: finished
+  completed: True
+  ladok: True
 
 - name: Writing Scientific Articles
-  code: FDS3102
+  code: DS3102
   credits: 5
-  status: finished
+  completed: True
+  ladok: True
 
 - name: Research Theory, Method, Practice
   code: DD3001
   credits: 7.5
-  status: finished
+  completed: True
+  ladok: True
 
-- name: Machine Learning Over Networks
+- name: Fundamentals of Machine Learning Networks
   code: EP3260
   credits: 10
-  status: finished
+  completed: True
+  ladok: True
 
 - name: Robotics Reading Group
   code: DD3316
   credits: 6
-  status: in progress
+  completed: True
+  ladok: False
 
 - name: Deep Learning
   code: DD3410
   credits: 6
-  status: in progress
+  completed: True
+  ladok: True
 
 - name: System Integration for Robotics
   code: DD3356 
   credits: 7.5
-  status: in progress
-
-- name: Bornö Report
-  code: DD3 
-  credits: 3
-  status: in progress
+  completed: False
+  ladok: False
 
 
 # https://intra.ees.kth.se/en/forska-och-utbilda/forskarstod/support-for-doctoral/degree-requirements-1.651348
