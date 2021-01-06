@@ -59,6 +59,14 @@
   completed: False
   ladok: False
 
+- name: Mobile and Multi-Agent Control
+  code: DD3355
+  credits: 3
+  completed: True
+  ladok: False
+
+
+
 
 # https://intra.ees.kth.se/en/forska-och-utbilda/forskarstod/support-for-doctoral/degree-requirements-1.651348
 # 240 credits total

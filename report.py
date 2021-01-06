@@ -14,8 +14,15 @@ def report(fname, ladok=False, completed=False):
     third_cycle_credits = 0
     third_cycle_csc_credits = 0
 
+    # completed, but, un-ladoked
+    topics = list()
+
     # compute course credits
     for course in courses:
+
+        # completed, but, un-ladoked
+        if not course['ladok'] and course['completed']:
+            topics.append(course)
 
         # in Ladok and completed
         if course['ladok'] if ladok else True and course['completed'] if completed else True:
@@ -41,6 +48,10 @@ def report(fname, ladok=False, completed=False):
     print('<= 10 1st cycle credits: {} ({})'.format(True if first_cycle_credits <= 10 else False, first_cycle_credits))
     print('>= 45 3rd cycle credits: {} ({})'.format(True if third_cycle_credits >= 45 else False, third_cycle_credits))
     print('>= 30 3rd cycle CSC credits: {} ({})'.format(True if third_cycle_csc_credits >= 30 else False, third_cycle_csc_credits))
+
+    print('\nCompleted, but, un-Ladoked')
+    for course in topics:
+        print('{} {} ({})'.format(course['code'], course['name'], course['credits']))
 
 
 
